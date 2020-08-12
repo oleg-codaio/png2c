@@ -1,7 +1,16 @@
 # png2c - Oleg Vaskevich
-png2c: png2c.c
-	gcc -o png2c png2c.c -I. -lpng
+TARGET := png2c
+SRC = png2c.c
+
+$(TARGET): $(SRC)
+	gcc -o $@ $^ -lpng
+
+install:
+	@cp -frv $(TARGET) /usr/local/bin
+
+uninstall:
+	@rm -frv /usr/local/bin/$(TARGET)
 
 clean:
-	rm -f png2c
+	rm -f $(TARGET)
 
